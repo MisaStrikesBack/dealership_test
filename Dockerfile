@@ -6,10 +6,10 @@ ENV PYTHONUNBUFFERED 1
 WORKDIR /app
 # coping files
 COPY . /app
-# update pip
-CMD ["pip", "install", "--upgrade", "pip"]
 # installing building libs not included in alpine image
-RUN set -e; \
+RUN pip install --upgrade pip; \
+	apk add openldap-dev; \
+	set -e; \
 	apk add --no-cache --virtual .build-deps \
 		gcc \
 		libc-dev \
