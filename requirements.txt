@@ -1,4 +1,9 @@
 Django>2.1
 djangorestframework
+python-ldap
 django-auth-ldap
 uwsgi
+psycopg2-binary
+dj-database-url
+whitenoise==3.2
+django-cors-headers>=1.3.1

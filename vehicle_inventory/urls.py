@@ -6,7 +6,7 @@ from django.urls import path, include
 
 from vehicle_inventory.views import (
     VehiclesListView, VehicleDetailView, VehicleDeleteView,
-    VehicleCreationView, VehicleUpdateView)
+    VehicleCreationView, VehicleUpdateView, LandingView)
 
 app_name = "vehicle_inventory"
 
@@ -20,4 +20,5 @@ vehicles_patterns = ([
 
 urlpatterns = [
     path('vehicles/', include(vehicles_patterns)),
+    path('', LandingView.as_view(), name="landing"),
 ]
