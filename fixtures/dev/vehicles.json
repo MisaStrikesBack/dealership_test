@@ -1,0 +1,28 @@
+[
+  {
+    "model": "vehicle_inventory.vehicle",
+    "pk": 1,
+    "fields": {
+      "make": "Toyota",
+      "model": "Sienna",
+      "year": "2016",
+      "description": "Not New",
+      "color": "Navy blue",
+      "doors": "4",
+      "lot": "XX-01"
+    }
+  },
+  {
+    "model": "vehicle_inventory.vehicle",
+    "pk": 2,
+    "fields": {
+      "make": "Chevrolet",
+      "model": "Bolt",
+      "year": "2019",
+      "description": "New",
+      "color": "Silver",
+      "doors": "3",
+      "lot": "XX-02"
+    }
+  }
+]
