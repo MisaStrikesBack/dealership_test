@@ -8,9 +8,14 @@ WORKDIR /app
 COPY . /app
 # installing building libs not included in alpine image
 RUN pip install --upgrade pip; \
-	apk add openldap-dev; \
+	pip install --upgrade setuptools; \
 	set -e; \
 	apk add --no-cache --virtual .build-deps \
+		postgresql-dev \
+		gcc \
+		python3-dev \
+		musl-dev \
+		openldap-dev \
 		gcc \
 		libc-dev \
 		linux-headers \
