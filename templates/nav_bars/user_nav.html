@@ -1,0 +1,15 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="{% url 'vehicles:list' %}">Dealership</a>
+    </div>
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'vehicles:create' %}">Add Vehicle</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'vehicles:list' %}">Vehicles List</a>
+      </li>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+  {% block content %}
+    <div class="jumbotron">
+      <h1 class="display-4 font-weight-bold mb-0">{{ vehicle }}</h1>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h5 class="card-title">Full Info</h5>
+          <div class="card">
+            <div class="card-body row">
+              <div class="col-9">
+                <h6 class="card-subtitle mb-2">Make: <span class="text-muted">{{ vehicle.make }}</span></h6>
+                <h6 class="card-subtitle mb-2">Model: <span class="text-muted">{{ vehicle.model }}</span></h6>
+                <h6 class="card-subtitle mb-2">Year: <span class="text-muted">{{ vehicle.year }}</span></h6>
+                <h6 class="card-subtitle mb-2">Color: <span class="text-muted">{{ vehicle.color }}</span></h6>
+                <h6 class="card-subtitle mb-2">Doors: <span class="text-muted">{{ vehicle.doors }}</span></h6>
+                <h6 class="card-subtitle mb-2">Lot: <span class="text-muted">{{ vehicle.lot }}</span></h6>
+                <h6 class="card-subtitle mb-2">Description: <span class="text-muted">{{ vehicle.description }}</span></h6>
+              </div>
+              <div class="col-3">
+                <a class="btn btn-primary" href="{% url 'vehicles:update' vehicle.id %}">Editar</a>
+                <button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% include 'modals/deletion-modal.html'%}
+  {% endblock %}

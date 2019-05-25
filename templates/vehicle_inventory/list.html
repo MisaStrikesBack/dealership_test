@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+  {% block content %}
+    <div class="jumbotron">
+      <h1 class="display-4">Stored Vehicles</h1>
+    </div>
+    <div class="container">
+      <p class="font-weight-bold">Click for extra info</p>
+      {% for vehicle in vehicles %}
+      <div class="card mb-4">
+        <div class="card-body">
+          <a href="{% url 'vehicles:details' vehicle.id %}" class="card-link" style="font-weight: 600;font-size:20px;" >{{ vehicle }}</a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  {% endblock %}
