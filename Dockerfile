@@ -9,10 +9,8 @@ COPY . /app
 # installing building libs not included in alpine image
 RUN pip install --upgrade pip; \
 	pip install --upgrade setuptools; \
-	set -e; \
-	apk add --no-cache --virtual .build-deps \
+	apk add \
 		postgresql-dev \
-		gcc \
 		python3-dev \
 		musl-dev \
 		openldap-dev \
@@ -20,7 +18,6 @@ RUN pip install --upgrade pip; \
 		libc-dev \
 		linux-headers \
 	; \
-	pip install -r requirements.txt; \
-	apk del .build-deps;
+	pip install -r requirements.txt;
 # running the server
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]

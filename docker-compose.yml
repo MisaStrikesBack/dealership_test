@@ -11,10 +11,16 @@ services:
   postgres:
     image: postgres:10.4-alpine
     volumes:
-      # mounting volume
+      # Mount the postgres data volume
       - postgres_data:/var/lib/postgresql/data
-      # init script
-      - ./db/init/:/docker-entrypoint-initdb.d
+      # Mount the database init scripts:
+      - ./db/init:/docker-entrypoint-initdb.d
+      # Mount the database dumps folder:
+      - ./db/dumps:/db/dumps
+      # Mount the 'dumpdb' script
+      - ./bin/dumpdb:/bin/dumpdb:ro
+      # Mount the 'restoredb' script
+      - ./bin/restoredb:/bin/restoredb:ro
     networks:
       - backend
     ports:
@@ -40,4 +46,4 @@ services:
     - backend
     environment: &app_env
       DEBUG: 'True'
-      DATABASE_URL: postgres://postgres:T3sTtE5T@postgres:5432/dealership_db
+      DATABASE_URL: postgres://postgres:T3sTtE5T@postgres:5432/Dealership_db
