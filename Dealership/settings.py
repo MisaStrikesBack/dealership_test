@@ -64,10 +64,12 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'Dealership.urls'
 
-AUTHENTICATION_BACKENDS = [
-    'django_auth_ldap.backend.LDAPBackend',
-    'django.contrib.auth.backends.ModelBackend',
-]
+# a ldap enviroment var is necessary to set it as authentication backend
+if os.environ.get('LDAP_ENABLED'):
+    AUTHENTICATION_BACKENDS = [
+        'django_auth_ldap.backend.LDAPBackend',
+        'django.contrib.auth.backends.ModelBackend',
+    ]
 
 TEMPLATES = [
     {
