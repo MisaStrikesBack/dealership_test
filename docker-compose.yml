@@ -1,0 +1,43 @@
+version: "3.6"
+
+volumes:
+  postgres_data:
+
+networks:
+  backend:
+
+services:
+  # db services
+  postgres:
+    image: postgres:10.4-alpine
+    volumes:
+      # mounting volume
+      - postgres_data:/var/lib/postgresql/data
+      # init script
+      - ./db/init/:/docker-entrypoint-initdb.d
+    networks:
+      - backend
+    ports:
+      - published: ${POSTGRES_PORT:-5432}
+        target: 5432
+    environment:
+      POSTGRES_PASSWORD: T3sTtE5T
+      LC_ALL: C.UTF-8
+  # web service
+  web: &app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+    - .:/app
+    ports:
+    - published: ${WEB_PORT:-8000}
+      target: 8000
+    depends_on:
+    - postgres
+    networks:
+    - backend
+    environment: &app_env
+      DEBUG: 'True'
+      DATABASE_URL: postgres://postgres:T3sTtE5T@postgres:5432/dealership_db
