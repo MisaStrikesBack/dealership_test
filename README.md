@@ -1,6 +1,6 @@
-# Stratis Zoo tech test
+# Cigna tech test
 
-This the Stratis dev test
+This the Cigna dev test
 
 ## Contents
 * [Staging](#staging)
